@@ -25,6 +25,8 @@
 @property (nonatomic, assign) NSInteger numberOfColumns;
 @property (nonatomic, assign) CGFloat itemWidth;
 @property (nonatomic, assign) CGFloat itemHeight;
+@property (nonatomic, assign) CGFloat minScale;
+@property (nonatomic, assign) CGFloat maxScale;
 @property (nonatomic, weak) id<ZBZoomGridViewDelegate> delegate;
 
 - (void)refreshContent;

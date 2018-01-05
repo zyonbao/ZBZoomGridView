@@ -116,16 +116,17 @@
     self.hIndexView.y =  self.containerScrollView.contentOffset.y + (kScrollViewInset-kIndexViewWidth)/2;
     self.hIndexView.x = self.gridsView.x - kSmallMargin;
     self.hIndexView.indexsArray = columns;
+    
+    CGFloat goalScale = ({
+        CGFloat hScale = self.containerScrollView.frame.size.width/self.gridsView.gridViewSize.width;
+        CGFloat vScale = self.containerScrollView.frame.size.height/self.gridsView.gridViewSize.height;
+        MIN(hScale, vScale);
+    });
+    self.minScale = goalScale;
+    self.maxScale = 1.0f;
 }
 
 -(void)startAnimation{
-    
-    
-    CGFloat goalScale = ({
-        CGFloat hScale = (self.containerScrollView.frame.size.width-kScrollViewInset)/self.gridsView.gridViewSize.width;
-        CGFloat vScale = (self.containerScrollView.frame.size.height-kScrollViewInset)/self.gridsView.gridViewSize.height;
-        MIN(hScale, vScale);
-    });
     
     [UIView animateWithDuration:0.5
                           delay:0.2
@@ -133,7 +134,7 @@
                      animations:^{
                          
                          CGRect zoomRect = [self _zoomRectInView:self.containerScrollView
-                                                        forScale:goalScale
+                                                        forScale:self.minScale
                                                       withCenter:CGPointMake(self.gridsView.gridViewSize.width/2,
                                                                              self.gridsView.gridViewSize.height/2)];
                          
@@ -204,6 +205,23 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(zoomGridView:drawInContext:forColumn:row:frame:)]) {
         [self.delegate zoomGridView:self drawInContext:context forColumn:column row:row frame:frame];
     }
+}
+
+#pragma mark - getter & setter
+- (void)setMinScale:(CGFloat)minScale {
+    [self.containerScrollView setMinimumZoomScale:minScale];
+}
+
+- (void)setMaxScale:(CGFloat)maxScale {
+    [self.containerScrollView setMaximumZoomScale:maxScale];
+}
+
+- (CGFloat)minScale {
+    return self.containerScrollView.minimumZoomScale;
+}
+
+- (CGFloat)maxScale {
+    return self.containerScrollView.maximumZoomScale;
 }
 
 @end

@@ -27,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.zoomView = [[ZBZoomGridView alloc] initWithFrame:CGRectMake(0, 20, 320, 400)];
     self.zoomView.delegate = self;
     self.zoomView.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1.00];
