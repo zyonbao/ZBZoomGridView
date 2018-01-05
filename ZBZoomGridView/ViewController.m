@@ -28,7 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.zoomView = [[ZBZoomGridView alloc] initWithFrame:CGRectMake(0, 20, 320, 400)];
+    self.zoomView = [[ZBZoomGridView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     self.zoomView.delegate = self;
     self.zoomView.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1.00];
     self.zoomView.itemWidth = 80;
@@ -42,7 +42,8 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[zoomView]-0-|" options:0 metrics:nil views:@{@"zoomView":self.zoomView}]];
     
     [self.zoomView refreshContent];
-    [self.zoomView startAnimation];
+    //0.3s 后布局刷新应该完成了吧
+    [self.zoomView performSelector:@selector(scale2MinAnimation)  withObject:nil afterDelay:0.3];
 }
 
 - (void)zoomGridView:(ZBZoomGridView *)zoomGridView didTapAtColumn:(NSInteger)column row:(NSInteger)row {

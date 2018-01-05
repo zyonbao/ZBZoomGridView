@@ -14,7 +14,8 @@
 
 #define kIndexViewWidth 20
 #define kScrollViewInset 50
-#define kSmallMargin 4 // indexView 超出的部分
+#define kSmallMargin 2 // indexView 超出的部分
+#define kTailingMarigin 10 // 缩放的时候尾部所需要留出的空白大小
 
 @interface ZBZoomGridView()<UIScrollViewDelegate, ZBGridsViewDelegate>
 
@@ -116,31 +117,29 @@
     self.hIndexView.y =  self.containerScrollView.contentOffset.y + (kScrollViewInset-kIndexViewWidth)/2;
     self.hIndexView.x = self.gridsView.x - kSmallMargin;
     self.hIndexView.indexsArray = columns;
-    
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
     CGFloat goalScale = ({
-        CGFloat hScale = self.containerScrollView.frame.size.width/self.gridsView.gridViewSize.width;
-        CGFloat vScale = self.containerScrollView.frame.size.height/self.gridsView.gridViewSize.height;
+        CGFloat hScale = (self.containerScrollView.frame.size.width-kScrollViewInset-kTailingMarigin)/self.gridsView.gridViewSize.width;
+        CGFloat vScale = (self.containerScrollView.frame.size.height-kScrollViewInset-kTailingMarigin)/self.gridsView.gridViewSize.height;
         MIN(hScale, vScale);
     });
     self.minScale = goalScale;
     self.maxScale = 1.0f;
 }
 
--(void)startAnimation{
-    
-    [UIView animateWithDuration:0.5
-                          delay:0.2
-                        options:UIViewAnimationOptionCurveEaseOut
-                     animations:^{
-                         
-                         CGRect zoomRect = [self _zoomRectInView:self.containerScrollView
-                                                        forScale:self.minScale
-                                                      withCenter:CGPointMake(self.gridsView.gridViewSize.width/2,
-                                                                             self.gridsView.gridViewSize.height/2)];
-                         
-                         [self.containerScrollView zoomToRect:zoomRect
-                                                animated:NO];
-                     } completion:nil];
+- (void)scale2MinAnimation{
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect zoomRect = [self _zoomRectInView:self.containerScrollView
+                                       forScale:self.minScale
+                                     withCenter:CGPointMake(self.gridsView.gridViewSize.width/2,
+                                                            self.gridsView.gridViewSize.height/2)];
+        
+        [self.containerScrollView zoomToRect:zoomRect
+                                    animated:NO];
+    }];
 }
 
 #pragma mark - <UIScrollViewDelegate>
@@ -196,7 +195,11 @@
         [self.delegate zoomGridView:self didTapAtColumn:column row:row];
     }
     if (self.containerScrollView.zoomScale < 1.0) {
-        CGRect zoomRect = [self _zoomRectInView:self.containerScrollView forScale:1.0 withCenter:CGPointMake(column*_itemWidth, row*_itemHeight)];
+        CGRect zoomRect = [self _zoomRectInView:self.containerScrollView forScale:1.0
+                                     withCenter:CGPointMake(
+                                                            column*_itemWidth+_itemWidth*0.5,
+                                                            row*_itemHeight+_itemHeight*0.5
+                                                            )];
         [self.containerScrollView zoomToRect:zoomRect animated:YES];
     }
 }

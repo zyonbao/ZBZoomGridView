@@ -9,6 +9,8 @@
 #import "ZBVIndexView.h"
 #import "UIView+ZBFrame.h"
 
+#define kSmallMargin 2 // indexView 超出的部分
+
 @implementation ZBVIndexView
 
 -(instancetype)initWithFrame:(CGRect)frame{
@@ -41,7 +43,7 @@
     
     NSDictionary *attributeName = @{NSFontAttributeName: [UIFont systemFontOfSize:10],NSForegroundColorAttributeName : [UIColor blackColor]};
     
-    CGFloat NumberTitleH = (self.height - 2 * 4) / self.indexsArray.count;
+    CGFloat NumberTitleH = (self.height - 2 * kSmallMargin) / self.indexsArray.count;
     
     CGSize maxSize = CGSizeZero;
     
@@ -61,7 +63,7 @@
             CGSize strSize =  [title sizeWithAttributes:attributeName];
             
             [title drawAtPoint:CGPointMake(self.width * 0.5 - strSize.width  * 0.5,
-                                           4 + idx * NumberTitleH + NumberTitleH  * 0.5 - strSize.height  * 0.5
+                                           kSmallMargin + idx * NumberTitleH + NumberTitleH  * 0.5 - strSize.height  * 0.5
                                            )
                 withAttributes:attributeName];
         }];

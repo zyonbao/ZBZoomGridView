@@ -30,6 +30,10 @@
 @property (nonatomic, weak) id<ZBZoomGridViewDelegate> delegate;
 
 - (void)refreshContent;
-- (void)startAnimation;
+
+/**
+ 将视图缩放到能够展示所有表格的大小. 默认情况下,请在当前视图布局完成后再调用此方法.
+ */
+- (void)scale2MinAnimation;
 
 @end
