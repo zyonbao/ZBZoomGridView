@@ -10,7 +10,7 @@
 #import "ZBGridsView.h"
 #import "ZBHIndexView.h"
 #import "ZBVIndexView.h"
-#import "UIView+Extension.h"
+#import "UIView+ZBFrame.h"
 
 #define kIndexViewWidth 20
 #define kScrollViewInset 50

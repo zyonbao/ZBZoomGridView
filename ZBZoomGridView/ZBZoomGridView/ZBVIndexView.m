@@ -7,7 +7,7 @@
 //
 
 #import "ZBVIndexView.h"
-#import "UIView+Extension.h"
+#import "UIView+ZBFrame.h"
 
 @implementation ZBVIndexView
 

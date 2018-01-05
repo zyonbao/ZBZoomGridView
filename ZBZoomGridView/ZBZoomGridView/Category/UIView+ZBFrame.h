@@ -1,5 +1,5 @@
 //
-//  UIView+Extension.h
+//  UIView+ZBFrame.h
 //  ZBZoomGridView
 //
 //  Created by sungrow on 2018/1/4.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIView (Extension)
+@interface UIView (ZBFrame)
 @property (nonatomic, assign) CGFloat x;
 @property (nonatomic, assign) CGFloat y;
 @property (nonatomic, assign) CGFloat width;

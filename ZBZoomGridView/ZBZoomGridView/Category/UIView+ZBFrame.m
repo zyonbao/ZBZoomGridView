@@ -6,9 +6,9 @@
 //  Copyright © 2018年 picoluster. All rights reserved.
 //
 
-#import "UIView+Extension.h"
+#import "UIView+ZBFrame.h"
 
-@implementation UIView (Extension)
+@implementation UIView (ZBFrame)
 
 
 - (void)setX:(CGFloat)x

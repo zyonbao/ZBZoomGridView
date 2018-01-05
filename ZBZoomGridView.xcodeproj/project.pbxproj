@@ -17,7 +17,7 @@
 		2F893A441FFE01690098F14E /* ZBZoomGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F893A431FFE01690098F14E /* ZBZoomGridView.m */; };
 		2F893A471FFE01780098F14E /* ZBVIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F893A461FFE01780098F14E /* ZBVIndexView.m */; };
 		2F893A4A1FFE01820098F14E /* ZBHIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F893A491FFE01820098F14E /* ZBHIndexView.m */; };
-		2F893A4E1FFE0F8F0098F14E /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F893A4D1FFE01B20098F14E /* UIView+Extension.m */; };
+		2FCFB3191FFF51B000DC175D /* UIView+ZBFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCFB3181FFF51AB00DC175D /* UIView+ZBFrame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,8 +39,8 @@
 		2F893A461FFE01780098F14E /* ZBVIndexView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBVIndexView.m; sourceTree = "<group>"; };
 		2F893A481FFE01820098F14E /* ZBHIndexView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBHIndexView.h; sourceTree = "<group>"; };
 		2F893A491FFE01820098F14E /* ZBHIndexView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBHIndexView.m; sourceTree = "<group>"; };
-		2F893A4C1FFE01B20098F14E /* UIView+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
-		2F893A4D1FFE01B20098F14E /* UIView+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		2FCFB3171FFF51AB00DC175D /* UIView+ZBFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ZBFrame.h"; sourceTree = "<group>"; };
+		2FCFB3181FFF51AB00DC175D /* UIView+ZBFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZBFrame.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +73,6 @@
 		2F893A271FFE012F0098F14E /* ZBZoomGridView */ = {
 			isa = PBXGroup;
 			children = (
-				2F893A4B1FFE01A70098F14E /* Category */,
 				2F893A3E1FFE01450098F14E /* ZBZoomGridView */,
 				2F893A281FFE012F0098F14E /* AppDelegate.h */,
 				2F893A291FFE012F0098F14E /* AppDelegate.m */,
@@ -91,6 +90,7 @@
 		2F893A3E1FFE01450098F14E /* ZBZoomGridView */ = {
 			isa = PBXGroup;
 			children = (
+				2FCFB3161FFF51AB00DC175D /* Category */,
 				2F893A421FFE01690098F14E /* ZBZoomGridView.h */,
 				2F893A431FFE01690098F14E /* ZBZoomGridView.m */,
 				2F893A3F1FFE01540098F14E /* ZBGridsView.h */,
@@ -103,11 +103,11 @@
 			path = ZBZoomGridView;
 			sourceTree = "<group>";
 		};
-		2F893A4B1FFE01A70098F14E /* Category */ = {
+		2FCFB3161FFF51AB00DC175D /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				2F893A4C1FFE01B20098F14E /* UIView+Extension.h */,
-				2F893A4D1FFE01B20098F14E /* UIView+Extension.m */,
+				2FCFB3171FFF51AB00DC175D /* UIView+ZBFrame.h */,
+				2FCFB3181FFF51AB00DC175D /* UIView+ZBFrame.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -190,7 +190,7 @@
 				2F893A4A1FFE01820098F14E /* ZBHIndexView.m in Sources */,
 				2F893A2D1FFE012F0098F14E /* ViewController.m in Sources */,
 				2F893A381FFE012F0098F14E /* main.m in Sources */,
-				2F893A4E1FFE0F8F0098F14E /* UIView+Extension.m in Sources */,
+				2FCFB3191FFF51B000DC175D /* UIView+ZBFrame.m in Sources */,
 				2F893A2A1FFE012F0098F14E /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
