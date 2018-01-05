@@ -127,12 +127,11 @@
         MIN(hScale, vScale);
     });
     self.minScale = goalScale;
-    self.maxScale = 1.0f;
 }
 
 - (void)scale2MinAnimation{
     [UIView animateWithDuration:0.5 animations:^{
-        CGRect zoomRect = [self _zoomRectInView:self.containerScrollView
+        CGRect zoomRect = [self zoomRectInView:self.containerScrollView
                                        forScale:self.minScale
                                      withCenter:CGPointMake(self.gridsView.gridViewSize.width/2,
                                                             self.gridsView.gridViewSize.height/2)];
@@ -178,7 +177,7 @@
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
 }
 
-- (CGRect)_zoomRectInView:(UIView *)view forScale:(CGFloat)scale withCenter:(CGPoint)center {
+- (CGRect)zoomRectInView:(UIView *)view forScale:(CGFloat)scale withCenter:(CGPoint)center {
     
     CGRect zoomRect;
     zoomRect.size.height = view.bounds.size.height / scale;
@@ -194,8 +193,8 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(zoomGridView:didTapAtColumn:row:)]) {
         [self.delegate zoomGridView:self didTapAtColumn:column row:row];
     }
-    if (self.containerScrollView.zoomScale < 1.0) {
-        CGRect zoomRect = [self _zoomRectInView:self.containerScrollView forScale:1.0
+    if (self.containerScrollView.zoomScale < 1.0 && (ABS(self.containerScrollView.zoomScale - 1.0) > 0.01)) {
+        CGRect zoomRect = [self zoomRectInView:self.containerScrollView forScale:1.0
                                      withCenter:CGPointMake(
                                                             column*_itemWidth+_itemWidth*0.5,
                                                             row*_itemHeight+_itemHeight*0.5
